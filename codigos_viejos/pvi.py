@@ -248,18 +248,21 @@ def f(t,y):
     y1,y2 = y
     return np.array([y2, -(w**2)*y1])
 
-#first order
+#first order (y' = g(t,y))
 def g(t,y):
     # return (1+2*t)*(np.sqrt(y))
     # return t + 1 - y
-    return 2*np.exp(-5*t) -(9/10)*y
+    # return 2*np.exp(-5*t) -(9/10)*y
+    # return 1 + y**2
+    return (t**3)*y -1.25*y 
+
 w = 2
 # h = (b-a)/N
-N = 3
+N = 8
 a = 0
-b = 1
-y0 = 0.4
-point = 1
+b = 2
+y0 = 1
+point = 2
 
 k = 10 # oscillator
 
