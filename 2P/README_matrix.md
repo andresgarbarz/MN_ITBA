@@ -61,19 +61,6 @@ python matrix.py
 
 This will run a comprehensive demo showing all three methods on a sample 3x3 system.
 
-### Running Examples
-
-```bash
-python example_usage.py
-```
-
-This will show various examples including:
-
-- Simple 2x2 systems
-- Larger systems with different parameters
-- Performance comparisons
-- Error handling scenarios
-
 ## Method Details
 
 ### 1. LU Factorization

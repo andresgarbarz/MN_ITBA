@@ -9,6 +9,9 @@ class MatrixSolver:
     2. Jacobi Method
     3. Gauss-Seidel Method
     """
+
+    # Set NumPy print options for better formatting
+    np.set_printoptions(precision=4, suppress=True, floatmode='fixed')
     
     def __init__(self, A: np.ndarray, b: np.ndarray):
         """
@@ -283,21 +286,35 @@ def demo():
     except Exception as e:
         print(f"Comparison failed: {e}")
 
-
-if __name__ == "__main__":
-    # demo()
-
-    # A = np.array([
-    #     [4, 2, 1],
-    #     [1, 3, 1],
-    #     [3, 2, 6]
-    # ])
-    # b = np.array([4, 4, 7])
-    # solver = MatrixSolver(A, b)
-    # x, iterations, residuals = solver.jacobi_method(x0=np.array([0.1, 0.8, 0.5]), max_iter=3)
+def ejercicio_teoria():
+    A = np.array([
+        [4, 3, -1],
+        [-2, -4, 5],
+        [1, 2, 6]
+    ])
+    b = np.array([1, 5, 0])
+    solver = MatrixSolver(A, b)
+    L, U = solver.lu_factorization()
+    print("L matrix:")
+    print(L)
+    print("\nU matrix:")
+    print(U)
+    # x = solver.solve_lu(L, U)
     # print(x)
-    # print(iterations)
 
+def ejercicio_1():
+    A = np.array([
+        [4, 2, 1],
+        [1, 3, 1],
+        [3, 2, 6]
+    ])
+    b = np.array([4, 4, 7])
+    solver = MatrixSolver(A, b)
+    x, iterations, residuals = solver.jacobi_method(x0=np.array([0.1, 0.8, 0.5]), max_iter=3)
+    print("Jacobi solution:")
+    print(x)
+
+def ejercicio_2():    
     A = np.array([
         [5**2, 5, 1],
         [8**2, 8, 1],
@@ -306,4 +323,11 @@ if __name__ == "__main__":
     b = np.array([106.8, 177.2, 279.2])
     solver = MatrixSolver(A, b)
     x, iterations, residuals = solver.gauss_seidel_method(x0=np.array([1, 2, 3]), max_iter=2)
+    print("Gauss-Seidel solution:")
     print(x)
+
+
+if __name__ == "__main__":
+    ejercicio_teoria()
+    ejercicio_1()
+    ejercicio_2()
