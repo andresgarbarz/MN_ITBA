@@ -28,10 +28,12 @@ def biseccion(f, a, b, e=None, max_steps=None):
         L = abs(b - a)
         n = math.ceil(math.log2(L/e) - 1)
     else:
+        if max_steps is None:
+            raise ValueError("Debe ingresar tolerancia o cantidad de pasos")
         n = max_steps
     
     # Realizar n+1 iteraciones (n+1 pues empiezo en S0)
-    for i in range(n+1):
+    for i in range(n + 1):
         c = (a + b) / 2
         if f(c) == 0:
             return c, i + 1
