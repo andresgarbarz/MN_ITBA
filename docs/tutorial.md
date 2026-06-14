@@ -4,6 +4,8 @@ Este tutorial indica que archivo de `codigos_andy` usar para cada metodo de la g
 
 Para correr cualquier archivo, ubicarse en la carpeta del proyecto:
 
+En mi compu (Rodri) es:
+
 ```bash
 cd /Users/rodri/ITBA/metodos
 ```
@@ -375,8 +377,11 @@ Para usar RK4, editar el final del archivo y reemplazar temporalmente el bloque 
 
 ```python
 points = solve_g(rk4, a, b, N, y0=y0)
-print(evaluate(points, point))
+print_points_table(points)
+print(f"\ny({point}) = {evaluate(points, point)}")
 ```
+
+El script muestra una tabla con `k`, `t_k` e `y_k`, y al final el valor en `point`. Es el mismo formato que usan Euler, Taylor y Heun al terminar el menu interactivo.
 
 Antes de correr, igual tenes que editar:
 
@@ -399,15 +404,15 @@ python3 codigos_andy/codigos_viejos/pvi.py
 
 ## Resumen rapido
 
-| Tema | Metodo | Archivo | Como se usa |
-|---|---|---|---|
-| Ecuaciones no lineales | Biseccion | `codigos_andy/codigos_viejos/biseccion.py` | Correr e ingresar `f(x)`, intervalo y tolerancia/pasos |
-| Ecuaciones no lineales | Newton | `codigos_andy/codigos_buenos/newton.py` | Correr e ingresar `f(x)`, intervalo y tolerancia/iteraciones |
-| Ecuaciones no lineales | Punto fijo | `codigos_andy/codigos_viejos/puntos_fijos.py` | Correr e ingresar `g(x)`, no `f(x)` |
-| EDO/PVI | Euler | `codigos_andy/codigos_viejos/pvi.py` | Editar datos y elegir `e` |
-| EDO/PVI | Taylor orden 2 | `codigos_andy/codigos_viejos/pvi.py` | Editar datos y elegir `t` |
-| EDO/PVI | Heun orden 2 | `codigos_andy/codigos_viejos/pvi.py` | Editar datos y elegir `h` |
-| EDO/PVI | RK4 | `codigos_andy/codigos_viejos/pvi.py` | Editar datos y llamar `solve_g(rk4, a, b, N, y0=y0)` |
+| Tema                   | Metodo         | Archivo                                       | Como se usa                                                  |
+| ---------------------- | -------------- | --------------------------------------------- | ------------------------------------------------------------ |
+| Ecuaciones no lineales | Biseccion      | `codigos_andy/codigos_viejos/biseccion.py`    | Correr e ingresar `f(x)`, intervalo y tolerancia/pasos       |
+| Ecuaciones no lineales | Newton         | `codigos_andy/codigos_buenos/newton.py`       | Correr e ingresar `f(x)`, intervalo y tolerancia/iteraciones |
+| Ecuaciones no lineales | Punto fijo     | `codigos_andy/codigos_viejos/puntos_fijos.py` | Correr e ingresar `g(x)`, no `f(x)`                          |
+| EDO/PVI                | Euler          | `codigos_andy/codigos_viejos/pvi.py`          | Editar datos y elegir `e`                                    |
+| EDO/PVI                | Taylor orden 2 | `codigos_andy/codigos_viejos/pvi.py`          | Editar datos y elegir `t`                                    |
+| EDO/PVI                | Heun orden 2   | `codigos_andy/codigos_viejos/pvi.py`          | Editar datos y elegir `h`                                    |
+| EDO/PVI                | RK4            | `codigos_andy/codigos_viejos/pvi.py`          | Editar datos y llamar `solve_g(rk4, a, b, N, y0=y0)`         |
 
 ## Notas de escritura de funciones
 

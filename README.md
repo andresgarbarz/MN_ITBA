@@ -33,6 +33,8 @@ Contiene las implementaciones originales y versiones anteriores de los métodos:
 
 ## Uso
 
+Para una guia paso a paso de cada metodo, ver [docs/tutorial.md](docs/tutorial.md) hecha por [@rodrihern](https://github.com/rodrihern).
+
 Cada archivo contiene instrucciones específicas sobre cómo ejecutarlo y qué datos necesita como entrada. Las versiones más recientes en `codigos_buenos` incluyen mejoras en la interfaz de usuario y manejo de errores.
 
 ## Créditos
