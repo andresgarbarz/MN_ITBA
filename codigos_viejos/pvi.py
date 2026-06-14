@@ -8,6 +8,28 @@ Description: Implementación de métodos numéricos para resolver problemas de v
              Incluye métodos de Euler, Euler Modificado, Heun, RK2 y RK4
 """
 
+# --- ACA HAY QUE MODIFICAR
+
+
+#first order (y' = g(t,y))
+def g(t,y):
+    # ejemplos
+    # return (1+2*t)*(np.sqrt(y))
+    # return t + 1 - y
+    # return 2*np.exp(-5*t) -(9/10)*y
+    # return 1 + y**2
+    return (t - y) / 2
+
+w = 2
+# h = (b-a)/N
+N = 6
+a = 0
+b = 3
+y0 = 1
+point = 3
+
+# ---
+
 
 def rk2(func, start, end, a, b, p, q, y0, N):
     """
@@ -243,26 +265,23 @@ def solve_g(method, startX, endX, N, plotRange=None,yRange=None,plotExact=False,
 def evaluate(points,t):
     return min(points, key=lambda p: abs(p[0]-t))[1][0]
 
+def format_decimal(value, decimals=4):
+    return f"{value:.{decimals}f}".replace(".", ",")
+
+def print_points_table(points):
+    print("\nTabla de valores:")
+    print(f"{'k':>3} | {'t_k':>8} | {'y_k':>10}")
+    print("-" * 29)
+    for k, (t, y) in enumerate(points):
+        print(f"{k:>3} | {format_decimal(t, 1):>8} | {format_decimal(y[0], 4):>10}")
+
 #oscillator
 def f(t,y):
     y1,y2 = y
     return np.array([y2, -(w**2)*y1])
 
-#first order (y' = g(t,y))
-def g(t,y):
-    # return (1+2*t)*(np.sqrt(y))
-    # return t + 1 - y
-    # return 2*np.exp(-5*t) -(9/10)*y
-    # return 1 + y**2
-    return (t**3)*y -1.25*y 
 
-w = 2
-# h = (b-a)/N
-N = 8
-a = 0
-b = 2
-y0 = 1
-point = 2
+
 
 k = 10 # oscillator
 
@@ -286,4 +305,5 @@ while True:
     else:
         print("Invalid method. Please enter 'e' for Euler, 'm' for Modified Euler, 'h' for Heun, or 't' for Taylor.")
 
-print(evaluate(points,point)) # evaluate g(point)
+print_points_table(points)
+print(f"\ny({point}) = {evaluate(points,point)}") # evaluate g(point)

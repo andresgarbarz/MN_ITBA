@@ -1,13 +1,14 @@
 import re
 from math import pi, e, log, sin, cos, tan, exp, sqrt
-import sympy as sp
+from sympy.core.function import diff
+from sympy.core.symbol import Symbol
 
 def derivative(f, n):
     # Definir la variable simbólica
-    x = sp.Symbol('x')
+    x = Symbol('x')
 
     for _ in range(n):
-        f = sp.diff(f, x)
+        f = diff(f, x)
     return str(f)
 
 def preprocesar_expresion(expr):
@@ -15,7 +16,8 @@ def preprocesar_expresion(expr):
     Preprocesa una expresión matemática para hacerla más amigable.
     - Reemplaza ^ por ** para exponentes
     - Agrega * implícito entre números y variables
-    - Reemplaza pi y e por sus valores numéricos
+    - Reemplaza pi y e por sus valores numéricos sin romper exp(x)
+    - Permite exp(x) para exponenciales
     - Reemplaza ln(x) por log(x) (logaritmo natural)
     - Reemplaza logN(x) por log(x, N) (logaritmo en base N)
     """
@@ -26,9 +28,10 @@ def preprocesar_expresion(expr):
     expr = re.sub(r'(\d+)([a-zA-Z])', r'\1*\2', expr)
     expr = re.sub(r'([a-zA-Z])(\d+)', r'\1*\2', expr)
     
-    # Reemplazar pi y e
-    expr = expr.replace('pi', str(pi))
-    expr = expr.replace('e', str(e))
+    # Reemplazar pi y e solo cuando aparecen como constantes.
+    # No usar str.replace("e", ...) porque rompe exp(x).
+    expr = re.sub(r'(?<![A-Za-z])pi(?![A-Za-z])', str(pi), expr)
+    expr = re.sub(r'(?<![A-Za-z])e(?![A-Za-z])', str(e), expr)
     
     # Reemplazar ln(x) por log(x)
     expr = re.sub(r'ln\s*\(([^)]+)\)', r'log(\1)', expr)
