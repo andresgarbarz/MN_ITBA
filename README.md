@@ -6,7 +6,7 @@ Este repositorio contiene implementaciones de diferentes métodos numéricos par
 
 ### Directorio `codigos_buenos`
 
-Contiene las versiones más recientes y mejoradas de los métodos numéricos, que son permisivas en el input del usuario y estan verificadas por @andresgarbarz(https://github.com/andresgarbarz):
+Contiene las versiones más recientes y mejoradas de los métodos numéricos, que son permisivas en el input del usuario y estan verificadas por [@andresgarbarz](https://github.com/andresgarbarz):
 
 - `newton.py`: Implementación del método de Newton-Raphson
 - `math_parser.py`: Herramienta para el análisis y evaluación de expresiones matemáticas
@@ -40,3 +40,5 @@ Cada archivo contiene instrucciones específicas sobre cómo ejecutarlo y qué d
 ## Créditos
 
 El archivo `pvi.py` fue desarrollado originalmente por [@santiagolifischtz](https://github.com/santiagolifischtz) y levemente modificado por [@andresgarbarz](https://github.com/andresgarbarz).
+
+Tambien contribuyó con mejoras en el archivo `pvi.py` y el tutorial de uso [@rodrihern](https://github.com/rodrihern).
